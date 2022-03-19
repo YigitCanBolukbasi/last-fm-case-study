@@ -2,9 +2,9 @@ import {View, Text, TouchableWithoutFeedback, Image} from 'react-native';
 import React from 'react';
 import styles from './ArtistCard.styles';
 
-const ArtistCard = ({artist}) => {
+const ArtistCard = ({artist, onSelect}) => {
   return (
-    <TouchableWithoutFeedback>
+    <TouchableWithoutFeedback onPress={onSelect}>
       <View style={styles.container}>
         <Image style={styles.image} />
         <View style={styles.body_container}>
