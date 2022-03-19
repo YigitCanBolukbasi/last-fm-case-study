@@ -1,10 +1,10 @@
-import {View, Text, TouchableWithoutFeedback, Image} from 'react-native';
+import {View, Text, Image, TouchableOpacity} from 'react-native';
 import React from 'react';
 import styles from './ArtistCard.styles';
 
 const ArtistCard = ({artist, onSelect}) => {
   return (
-    <TouchableWithoutFeedback onPress={onSelect}>
+    <TouchableOpacity onPress={onSelect}>
       <View style={styles.container}>
         <Image style={styles.image} />
         <View style={styles.body_container}>
@@ -17,7 +17,7 @@ const ArtistCard = ({artist, onSelect}) => {
           </View>
         </View>
       </View>
-    </TouchableWithoutFeedback>
+    </TouchableOpacity>
   );
 };
 

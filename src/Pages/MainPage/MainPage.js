@@ -10,14 +10,16 @@ const MainPage = ({navigation}) => {
     'http://ws.audioscrobbler.com/2.0/?method=chart.gettopartists&api_key=fbdc2241acfbf4beaf00ddfe17d1e927&format=json',
   );
 
-  console.log(data?.artists?.artist[1].name);
+  console.log(data?.artists?.artist[1].mbid);
   const newData = data?.artists?.artist;
 
-  // const handleArtistSelect = id => {
-  //   navigation.navigate('DetailScreen', {id});
-  // };
+  const handleArtistSelect = mbid => {
+    navigation.navigate('DetailScreen', {mbid});
+  };
 
-  const renderArtist = ({item}) => <ArtistCard artist={item} />;
+  const renderArtist = ({item}) => (
+    <ArtistCard artist={item} onSelect={() => handleArtistSelect(item.mbid)} />
+  );
   if (loading) {
     return <ActivityIndicator size={'large'} />;
   }
@@ -29,7 +31,13 @@ const MainPage = ({navigation}) => {
   return (
     <View>
       <Text>MainPage</Text>
-      <FlatList data={newData} renderItem={renderArtist} />
+      <FlatList
+        data={newData}
+        renderItem={renderArtist}
+        keyExtractor={(item, index) => {
+          return index.toString();
+        }}
+      />
     </View>
   );
 };
