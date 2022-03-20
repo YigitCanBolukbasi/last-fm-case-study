@@ -5,6 +5,7 @@ export default StyleSheet.create({
     flex: 1,
     backgroundColor: 'white',
   },
+
   inner_container: {
     flex: 1,
     flexDirection: 'row',
@@ -50,5 +51,25 @@ export default StyleSheet.create({
     fontSize: 18,
     fontWeight: '800',
     color: '#000',
+  },
+
+  container_dark: {
+    flex: 1,
+    backgroundColor: 'black',
+  },
+  inner_containerdark: {
+    flex: 1,
+    flexDirection: 'row',
+    backgroundColor: 'dark',
+    borderTopWidth: 2,
+    borderTopColor: 'white',
+  },
+  text_dark: {
+    fontWeight: 'bold',
+    color: 'white',
+    borderBottomWidth: 1,
+    borderBottomColor: 'white',
+    marginTop: 10,
+    textAlign: 'center',
   },
 });

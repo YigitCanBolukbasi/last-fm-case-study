@@ -5,8 +5,11 @@ import styles from './DetailPage.styles';
 import useFetch from '../../Hooks/useFetch/useFetch';
 import ProductCard from '../../Components/Cards/ProductCard/ProductCard';
 import Config from 'react-native-config';
+import {useContext} from 'react';
+import ThemeContext from '../../Contexts/ThemeContext';
 
 const DetailPage = ({route}) => {
+  const {theme} = useContext(ThemeContext);
   const {mbid, name} = route.params;
 
   const topAlbums = useFetch(
@@ -35,7 +38,7 @@ const DetailPage = ({route}) => {
     );
   }
   return (
-    <View style={styles.container}>
+    <View style={theme ? styles.container_dark : styles.container}>
       <View style={styles.artist_shadow}>
         <View style={styles.artist_card}>
           <Image
@@ -47,9 +50,9 @@ const DetailPage = ({route}) => {
           <Text style={styles.artist_text}>{name}</Text>
         </View>
       </View>
-      <View style={styles.inner_container}>
+      <View style={theme ? styles.inner_containerdark : styles.inner_container}>
         <View style={styles.albums_container}>
-          <Text style={styles.text}>Top Albums</Text>
+          <Text style={theme ? styles.text_dark : styles.text}>Top Albums</Text>
           <FlatList
             renderItem={RenderAlbumsAndTracks}
             data={newTopAlbums}
@@ -59,7 +62,7 @@ const DetailPage = ({route}) => {
           />
         </View>
         <View>
-          <Text style={styles.text}>Top Tracks</Text>
+          <Text style={theme ? styles.text_dark : styles.text}>Top Tracks</Text>
           <FlatList
             renderItem={RenderAlbumsAndTracks}
             keyExtractor={(item, index) => {
