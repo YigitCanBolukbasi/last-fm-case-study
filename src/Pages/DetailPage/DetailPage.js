@@ -1,4 +1,4 @@
-import {View, FlatList} from 'react-native';
+import {View, FlatList, ActivityIndicator} from 'react-native';
 import React from 'react';
 
 import styles from './DetailPage.styles';
@@ -21,6 +21,18 @@ const DetailPage = ({route}) => {
 
   const RenderAlbumsAndTracks = ({item}) => <ProductCard product={item} />;
 
+  if (topAlbums.loading || topTracks.loading) {
+    return <ActivityIndicator size={'large'} />;
+  }
+
+  if (topAlbums.error || topTracks.error) {
+    return (
+      <Text>
+        {topAlbums.error}
+        {topTracks.error}
+      </Text>
+    );
+  }
   return (
     <View style={styles.container}>
       <View style={styles.albums_container}>
