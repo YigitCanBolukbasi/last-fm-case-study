@@ -13,7 +13,6 @@ const MainPage = ({navigation}) => {
 
   const newData = data?.artists?.artist;
   // console.log(newData?.[1]['image']);
-  console.log(Config.API_KEY);
 
   const handleArtistSelect = (mbid, name) => {
     navigation.navigate('DetailScreen', {mbid, name});

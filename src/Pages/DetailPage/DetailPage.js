@@ -8,7 +8,6 @@ import Config from 'react-native-config';
 
 const DetailPage = ({route}) => {
   const {mbid, name} = route.params;
-  console.log(name);
 
   const topAlbums = useFetch(
     `http://ws.audioscrobbler.com/2.0/?method=artist.gettopalbums&mbid=${mbid}&api_key=${Config.API_KEY}&format=json`,
