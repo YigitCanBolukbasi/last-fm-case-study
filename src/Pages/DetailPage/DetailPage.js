@@ -1,4 +1,4 @@
-import {View, FlatList, ActivityIndicator} from 'react-native';
+import {View, FlatList, ActivityIndicator, Text} from 'react-native';
 import React from 'react';
 
 import styles from './DetailPage.styles';
@@ -6,7 +6,8 @@ import useFetch from '../../Hooks/useFetch/useFetch';
 import ProductCard from '../../Components/Cards/ProductCard/ProductCard';
 
 const DetailPage = ({route}) => {
-  const {mbid} = route.params;
+  const {mbid, name} = route.params;
+  console.log(name);
 
   const topAlbums = useFetch(
     `http://ws.audioscrobbler.com/2.0/?method=artist.gettopalbums&mbid=${mbid}&api_key=fbdc2241acfbf4beaf00ddfe17d1e927&format=json`,
@@ -36,6 +37,7 @@ const DetailPage = ({route}) => {
   return (
     <View style={styles.container}>
       <View style={styles.albums_container}>
+        <Text style={styles.text}>Top Albums</Text>
         <FlatList
           renderItem={RenderAlbumsAndTracks}
           data={newTopAlbums}
@@ -45,6 +47,7 @@ const DetailPage = ({route}) => {
         />
       </View>
       <View>
+        <Text style={styles.text}>Top Tracks</Text>
         <FlatList
           renderItem={RenderAlbumsAndTracks}
           keyExtractor={(item, index) => {

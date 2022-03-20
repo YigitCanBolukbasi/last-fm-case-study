@@ -13,12 +13,15 @@ const MainPage = ({navigation}) => {
   const newData = data?.artists?.artist;
   console.log(newData?.[1]['image']);
 
-  const handleArtistSelect = mbid => {
-    navigation.navigate('DetailScreen', {mbid});
+  const handleArtistSelect = (mbid, name) => {
+    navigation.navigate('DetailScreen', {mbid, name});
   };
 
   const renderArtist = ({item}) => (
-    <ArtistCard artist={item} onSelect={() => handleArtistSelect(item.mbid)} />
+    <ArtistCard
+      artist={item}
+      onSelect={() => handleArtistSelect(item.mbid, item.name)}
+    />
   );
   if (loading) {
     return <ActivityIndicator size={'large'} />;
