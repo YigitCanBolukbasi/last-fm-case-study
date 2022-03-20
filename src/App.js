@@ -15,7 +15,11 @@ function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name="HomeScreen" component={MainPage} />
+        <Stack.Screen
+          name="HomeScreen"
+          component={MainPage}
+          options={{headerShown: false}}
+        />
         <Stack.Screen name="DetailScreen" component={DetailPage} />
       </Stack.Navigator>
     </NavigationContainer>

@@ -10,8 +10,8 @@ const MainPage = ({navigation}) => {
     'http://ws.audioscrobbler.com/2.0/?method=chart.gettopartists&api_key=fbdc2241acfbf4beaf00ddfe17d1e927&format=json',
   );
 
-  console.log(data?.artists?.artist[1].mbid);
   const newData = data?.artists?.artist;
+  console.log(newData?.[1]['image']);
 
   const handleArtistSelect = mbid => {
     navigation.navigate('DetailScreen', {mbid});
@@ -29,13 +29,15 @@ const MainPage = ({navigation}) => {
   }
 
   return (
-    <View>
-      <Text>MainPage</Text>
+    <View style={styles.container}>
       <FlatList
         data={newData}
         renderItem={renderArtist}
         keyExtractor={(item, index) => {
           return index.toString();
+        }}
+        contentContainerStyle={{
+          padding: 20,
         }}
       />
     </View>
