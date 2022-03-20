@@ -4,17 +4,18 @@ import React from 'react';
 import styles from './DetailPage.styles';
 import useFetch from '../../Hooks/useFetch/useFetch';
 import ProductCard from '../../Components/Cards/ProductCard/ProductCard';
+import Config from 'react-native-config';
 
 const DetailPage = ({route}) => {
   const {mbid, name} = route.params;
   console.log(name);
 
   const topAlbums = useFetch(
-    `http://ws.audioscrobbler.com/2.0/?method=artist.gettopalbums&mbid=${mbid}&api_key=fbdc2241acfbf4beaf00ddfe17d1e927&format=json`,
+    `http://ws.audioscrobbler.com/2.0/?method=artist.gettopalbums&mbid=${mbid}&api_key=${Config.API_KEY}&format=json`,
   );
 
   const topTracks = useFetch(
-    `http://ws.audioscrobbler.com/2.0/?method=artist.gettoptracks&mbid=${mbid}&api_key=fbdc2241acfbf4beaf00ddfe17d1e927&format=json`,
+    `http://ws.audioscrobbler.com/2.0/?method=artist.gettoptracks&mbid=${mbid}&api_key=${Config.API_KEY}&format=json`,
   );
 
   const newTopAlbums = topAlbums?.data?.topalbums?.album;

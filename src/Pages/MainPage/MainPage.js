@@ -4,14 +4,16 @@ import React from 'react';
 import styles from './MainPage.styles';
 import ArtistCard from '../../Components/Cards/ArtistCard/ArtistCard';
 import useFetch from '../../Hooks/useFetch/useFetch';
+import Config from 'react-native-config';
 
 const MainPage = ({navigation}) => {
   const {data, loading, error} = useFetch(
-    'http://ws.audioscrobbler.com/2.0/?method=chart.gettopartists&api_key=fbdc2241acfbf4beaf00ddfe17d1e927&format=json',
+    `http://ws.audioscrobbler.com/2.0/?method=chart.gettopartists&api_key=${Config.API_KEY}&format=json`,
   );
 
   const newData = data?.artists?.artist;
-  console.log(newData?.[1]['image']);
+  // console.log(newData?.[1]['image']);
+  console.log(Config.API_KEY);
 
   const handleArtistSelect = (mbid, name) => {
     navigation.navigate('DetailScreen', {mbid, name});
