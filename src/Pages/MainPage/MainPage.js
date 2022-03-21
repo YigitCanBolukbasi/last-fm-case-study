@@ -10,21 +10,20 @@ import ThemeContext from '../../Contexts/ThemeContext';
 
 const MainPage = ({navigation}) => {
   const {theme, setTheme} = useContext(ThemeContext);
-  const toggleSwitch = () => setTheme(previousState => !previousState);
   const {data, loading, error} = useFetch(
     `http://ws.audioscrobbler.com/2.0/?method=chart.gettopartists&api_key=${Config.API_KEY}&format=json`,
   );
 
-  const newData = data?.artists?.artist;
+  const toggleSwitch = () => setTheme(previousState => !previousState);
 
-  const handleArtistSelect = (mbid, name) => {
-    navigation.navigate('DetailScreen', {mbid, name});
+  const handleArtistSelect = (mbid, name, image) => {
+    navigation.navigate('DetailScreen', {mbid, name, image});
   };
 
   const renderArtist = ({item}) => (
     <ArtistCard
       artist={item}
-      onSelect={() => handleArtistSelect(item.mbid, item.name)}
+      onSelect={() => handleArtistSelect(item.mbid, item.name, item.image)}
     />
   );
   if (loading) {
@@ -50,7 +49,7 @@ const MainPage = ({navigation}) => {
         value={theme}
       />
       <FlatList
-        data={newData}
+        data={data?.artists?.artist}
         renderItem={renderArtist}
         keyExtractor={(item, index) => {
           return index.toString();
