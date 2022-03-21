@@ -9,6 +9,7 @@ import {useContext} from 'react';
 import ThemeContext from '../../Contexts/ThemeContext';
 
 const MainPage = ({navigation}) => {
+  // throw new Error('opps!');
   const {theme, setTheme} = useContext(ThemeContext);
   const {data, loading, error} = useFetch({method: 'chart.gettopartists'});
 
@@ -55,6 +56,7 @@ const MainPage = ({navigation}) => {
         contentContainerStyle={{
           padding: 20,
         }}
+        ListEmptyComponent={<Text>This list is empty</Text>}
       />
     </View>
   );

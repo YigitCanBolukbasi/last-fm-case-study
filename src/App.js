@@ -9,23 +9,33 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import MainPage from './Pages/MainPage/MainPage';
 import ArtistDetailPage from './Pages/ArtistDetailPage/ArtistDetailPage';
 import {ThemeProvider} from './Contexts/ThemeContext';
+import ErrorBoundary from './Components/ErrorBoundary';
+import * as Sentry from '@sentry/react-native';
+
+Sentry.init({
+  dsn: 'https://7814c904f5b6472fbb489df9bc61c283@o1174049.ingest.sentry.io/6269742',
+
+  tracesSampleRate: 1.0,
+});
 
 const Stack = createNativeStackNavigator();
 
 function App() {
   return (
-    <ThemeProvider>
-      <NavigationContainer>
-        <Stack.Navigator>
-          <Stack.Screen
-            name="HomeScreen"
-            component={MainPage}
-            options={{headerShown: false}}
-          />
-          <Stack.Screen name="DetailScreen" component={ArtistDetailPage} />
-        </Stack.Navigator>
-      </NavigationContainer>
-    </ThemeProvider>
+    <ErrorBoundary>
+      <ThemeProvider>
+        <NavigationContainer>
+          <Stack.Navigator>
+            <Stack.Screen
+              name="HomeScreen"
+              component={MainPage}
+              options={{headerShown: false}}
+            />
+            <Stack.Screen name="DetailScreen" component={ArtistDetailPage} />
+          </Stack.Navigator>
+        </NavigationContainer>
+      </ThemeProvider>
+    </ErrorBoundary>
   );
 }
 
