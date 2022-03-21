@@ -7,7 +7,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 import MainPage from './Pages/MainPage/MainPage';
-import DetailPage from './Pages/DetailPage/DetailPage';
+import ArtistDetailPage from './Pages/ArtistDetailPage/ArtistDetailPage';
 import {ThemeProvider} from './Contexts/ThemeContext';
 
 const Stack = createNativeStackNavigator();
@@ -22,7 +22,7 @@ function App() {
             component={MainPage}
             options={{headerShown: false}}
           />
-          <Stack.Screen name="DetailScreen" component={DetailPage} />
+          <Stack.Screen name="DetailScreen" component={ArtistDetailPage} />
         </Stack.Navigator>
       </NavigationContainer>
     </ThemeProvider>
