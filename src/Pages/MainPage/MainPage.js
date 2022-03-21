@@ -10,9 +10,7 @@ import ThemeContext from '../../Contexts/ThemeContext';
 
 const MainPage = ({navigation}) => {
   const {theme, setTheme} = useContext(ThemeContext);
-  const {data, loading, error} = useFetch(
-    `http://ws.audioscrobbler.com/2.0/?method=chart.gettopartists&api_key=${Config.API_KEY}&format=json`,
-  );
+  const {data, loading, error} = useFetch({method: 'chart.gettopartists'});
 
   const toggleSwitch = () => setTheme(previousState => !previousState);
 

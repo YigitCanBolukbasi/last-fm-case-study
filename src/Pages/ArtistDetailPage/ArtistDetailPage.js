@@ -14,13 +14,15 @@ const ArtistDetailPage = ({route}) => {
 
   const artistImage = image.filter(i => i.size === 'extralarge');
 
-  const topAlbums = useFetch(
-    `http://ws.audioscrobbler.com/2.0/?method=artist.gettopalbums&mbid=${mbid}&api_key=${Config.API_KEY}&format=json`,
-  );
+  const topAlbums = useFetch({
+    method: 'artist.gettopalbums',
+    mbid,
+  });
 
-  const topTracks = useFetch(
-    `http://ws.audioscrobbler.com/2.0/?method=artist.gettoptracks&mbid=${mbid}&api_key=${Config.API_KEY}&format=json`,
-  );
+  const topTracks = useFetch({
+    method: 'artist.gettoptracks',
+    mbid,
+  });
 
   const RenderAlbumsAndTracks = ({item}) => <ProductCard product={item} />;
 

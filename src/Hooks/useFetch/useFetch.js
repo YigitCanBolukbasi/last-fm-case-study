@@ -1,14 +1,19 @@
 import axios from 'axios';
 import {useEffect, useState} from 'react';
+import Config from 'react-native-config';
 
-function useFetch(url) {
+const BASE_URL = 'http://ws.audioscrobbler.com/2.0/';
+
+function useFetch(option) {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [data, setData] = useState([]);
 
   const fetchData = async () => {
     try {
-      const {data: productData} = await axios.get(url);
+      const {data: productData} = await axios.get(BASE_URL, {
+        params: {api_key: Config.API_KEY, format: 'json', ...option},
+      });
       setData(productData);
       setLoading(false);
     } catch (err) {
@@ -19,7 +24,7 @@ function useFetch(url) {
 
   useEffect(() => {
     fetchData();
-  }, [url]);
+  }, [option]);
 
   return {error, loading, data};
 }
