@@ -4,14 +4,16 @@ import React from 'react';
 import styles from './MainPage.styles';
 import ArtistCard from '../../Components/Cards/ArtistCard/ArtistCard';
 import useFetch from '../../Hooks/useFetch/useFetch';
-import Config from 'react-native-config';
 import {useContext} from 'react';
 import ThemeContext from '../../Contexts/ThemeContext';
 
 const MainPage = ({navigation}) => {
   // throw new Error('opps!');
   const {theme, setTheme} = useContext(ThemeContext);
-  const {data, loading, error} = useFetch({method: 'chart.gettopartists'});
+  const {data, isLoading, error} = useFetch(
+    'topArtist',
+    'https://ws.audioscrobbler.com/2.0/?method=chart.gettopartists&api_key=fbdc2241acfbf4beaf00ddfe17d1e927&format=json',
+  );
 
   const toggleSwitch = () => setTheme(previousState => !previousState);
 
@@ -25,7 +27,7 @@ const MainPage = ({navigation}) => {
       onSelect={() => handleArtistSelect(item.mbid, item.name, item.image)}
     />
   );
-  if (loading) {
+  if (isLoading) {
     return <ActivityIndicator size={'large'} />;
   }
 

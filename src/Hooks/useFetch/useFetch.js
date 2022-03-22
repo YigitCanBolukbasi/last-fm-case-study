@@ -1,32 +1,16 @@
 import axios from 'axios';
 import {useEffect, useState} from 'react';
 import Config from 'react-native-config';
+import {useQuery} from 'react-query';
 
 const BASE_URL = 'http://ws.audioscrobbler.com/2.0/';
 
-function useFetch(option) {
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-  const [data, setData] = useState([]);
+function useFetch(name, url) {
+  const {isLoading, error, data, isSuccess} = useQuery(name, () =>
+    fetch(url).then(res => res.json()),
+  );
 
-  const fetchData = async () => {
-    try {
-      const {data: productData} = await axios.get(BASE_URL, {
-        params: {api_key: Config.API_KEY, format: 'json', ...option},
-      });
-      setData(productData);
-      setLoading(false);
-    } catch (err) {
-      setError(err.message);
-      setLoading(false);
-    }
-  };
-
-  useEffect(() => {
-    fetchData();
-  }, [option]);
-
-  return {error, loading, data};
+  return {error, isLoading, data, isSuccess};
 }
 
 export default useFetch;

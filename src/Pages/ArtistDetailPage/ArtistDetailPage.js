@@ -4,7 +4,6 @@ import React from 'react';
 import styles from './ArtistDetailPage.styles';
 import useFetch from '../../Hooks/useFetch/useFetch';
 import ProductCard from '../../Components/Cards/ProductCard/ProductCard';
-import Config from 'react-native-config';
 import {useContext} from 'react';
 import ThemeContext from '../../Contexts/ThemeContext';
 
@@ -14,19 +13,19 @@ const ArtistDetailPage = ({route}) => {
 
   const artistImage = image.filter(i => i.size === 'extralarge');
 
-  const topAlbums = useFetch({
-    method: 'artist.gettopalbums',
-    mbid,
-  });
+  const topAlbums = useFetch(
+    'topAlbums',
+    `https://ws.audioscrobbler.com/2.0/?method=artist.gettopalbums&mbid=${mbid}&api_key=fbdc2241acfbf4beaf00ddfe17d1e927&format=json`,
+  );
 
-  const topTracks = useFetch({
-    method: 'artist.gettoptracks',
-    mbid,
-  });
+  const topTracks = useFetch(
+    'toptracks',
+    `https://ws.audioscrobbler.com/2.0/?method=artist.gettoptracks&mbid=${mbid}&api_key=fbdc2241acfbf4beaf00ddfe17d1e927&format=json`,
+  );
 
   const RenderAlbumsAndTracks = ({item}) => <ProductCard product={item} />;
 
-  if (topAlbums.loading || topTracks.loading) {
+  if (topAlbums.isLoading || topTracks.isLoading) {
     return <ActivityIndicator size={'large'} />;
   }
 
