@@ -72,4 +72,17 @@ export default StyleSheet.create({
     marginTop: 10,
     textAlign: 'center',
   },
+  artist_card_dark: {
+    flex: 1,
+    padding: 5,
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: 'gray',
+    borderRadius: 12,
+  },
+  artist_text_dark: {
+    fontSize: 18,
+    fontWeight: '800',
+    color: 'white',
+  },
 });

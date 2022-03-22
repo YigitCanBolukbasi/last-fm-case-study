@@ -12,13 +12,7 @@ import {ThemeProvider} from './Contexts/ThemeContext';
 import ErrorBoundary from './Components/ErrorBoundary';
 import * as Sentry from '@sentry/react-native';
 
-import {
-  useQuery,
-  useMutation,
-  useQueryClient,
-  QueryClient,
-  QueryClientProvider,
-} from 'react-query';
+import {QueryClient, QueryClientProvider} from 'react-query';
 
 Sentry.init({
   dsn: 'https://7814c904f5b6472fbb489df9bc61c283@o1174049.ingest.sentry.io/6269742',

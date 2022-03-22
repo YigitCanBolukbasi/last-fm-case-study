@@ -1,8 +1,12 @@
 import {View, Text, Image} from 'react-native';
 import React from 'react';
 import styles from './ProductCard.styles';
+import {useContext} from 'react';
+import ThemeContext from '../../../Contexts/ThemeContext';
 
 const ProductCard = ({product}) => {
+  const {theme} = useContext(ThemeContext);
+
   const img = product.image;
   let photos = '';
   img.forEach(i => {
@@ -11,7 +15,7 @@ const ProductCard = ({product}) => {
 
   return (
     <View style={styles.shadow_container}>
-      <View style={styles.container}>
+      <View style={theme ? styles.container_dark : styles.container}>
         <Image
           style={styles.image}
           source={
@@ -24,15 +28,21 @@ const ProductCard = ({product}) => {
         />
         <View style={styles.body_container}>
           <View style={styles.title_container}>
-            <Text style={styles.title}>Graduation</Text>
-            <Text style={styles.name}>{product.name}</Text>
+            <Text style={theme ? styles.title_dark : styles.title}>
+              Graduation
+            </Text>
+            <Text style={theme ? styles.name_dark : styles.name}>
+              {product.name}
+            </Text>
           </View>
           <View style={styles.inner_container}>
-            <Text style={styles.text}>
+            <Text style={theme ? styles.text_dark : styles.text}>
               {product.listeners && 'Listeners:'}
               {product.listeners && product.listeners}
             </Text>
-            <Text style={styles.text}>PlayCount:{product.playcount}</Text>
+            <Text style={theme ? styles.text_dark : styles.text}>
+              PlayCount:{product.playcount}
+            </Text>
           </View>
         </View>
       </View>

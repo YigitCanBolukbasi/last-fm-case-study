@@ -53,4 +53,34 @@ export default StyleSheet.create({
     color: 'black',
     margin: 5,
   },
+
+  container_dark: {
+    flexDirection: 'row',
+    padding: 10,
+    height: Dimensions.get('window').height / 9,
+    zIndex: 1,
+    backgroundColor: 'gray',
+  },
+  title_dark: {
+    fontSize: 10,
+    fontWeight: '700',
+    color: 'white',
+    borderBottomColor: 'white',
+    borderBottomWidth: 1,
+  },
+  name_dark: {
+    fontSize: 10,
+    fontWeight: '700',
+    color: 'white',
+  },
+  text_dark: {
+    fontSize: 8,
+    color: 'white',
+    margin: 5,
+  },
+  name_dark: {
+    fontSize: 10,
+    fontWeight: '700',
+    color: 'white',
+  },
 });

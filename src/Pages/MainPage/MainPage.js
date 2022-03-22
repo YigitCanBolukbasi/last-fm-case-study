@@ -1,18 +1,20 @@
 import {View, Text, FlatList, ActivityIndicator, Switch} from 'react-native';
-import React from 'react';
+import React, {useState} from 'react';
 
 import styles from './MainPage.styles';
 import ArtistCard from '../../Components/Cards/ArtistCard/ArtistCard';
 import useFetch from '../../Hooks/useFetch/useFetch';
 import {useContext} from 'react';
 import ThemeContext from '../../Contexts/ThemeContext';
+import Config from 'react-native-config';
 
 const MainPage = ({navigation}) => {
+  const [currentPage, setCurrentPage] = useState(1);
   // throw new Error('opps!');
   const {theme, setTheme} = useContext(ThemeContext);
   const {data, isLoading, error} = useFetch(
     'topArtist',
-    'https://ws.audioscrobbler.com/2.0/?method=chart.gettopartists&api_key=fbdc2241acfbf4beaf00ddfe17d1e927&format=json',
+    `http://ws.audioscrobbler.com/2.0/?method=chart.gettopartists&api_key=${Config.API_KEY}&format=json&limit=20&page=${currentPage}`,
   );
 
   const toggleSwitch = () => setTheme(previousState => !previousState);
@@ -27,6 +29,15 @@ const MainPage = ({navigation}) => {
       onSelect={() => handleArtistSelect(item.mbid, item.name, item.image)}
     />
   );
+
+  const renderFooter = () => {
+    return <ActivityIndicator size={'large'} />;
+  };
+
+  const handleLoadMore = () => {
+    setCurrentPage(currentPage + 1);
+  };
+
   if (isLoading) {
     return <ActivityIndicator size={'large'} />;
   }
@@ -51,14 +62,18 @@ const MainPage = ({navigation}) => {
       />
       <FlatList
         data={data?.artists?.artist}
+        extraData={data?.artists?.artist}
         renderItem={renderArtist}
         keyExtractor={(item, index) => {
-          return index.toString();
+          return item.listeners.toString();
         }}
         contentContainerStyle={{
           padding: 20,
         }}
         ListEmptyComponent={<Text>This list is empty</Text>}
+        ListFooterComponent={renderFooter}
+        onEndReached={handleLoadMore}
+        onEndReachedThreshold={0}
       />
     </View>
   );
