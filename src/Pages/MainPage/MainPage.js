@@ -10,10 +10,9 @@ import Config from 'react-native-config';
 
 const MainPage = ({navigation}) => {
   const [currentPage, setCurrentPage] = useState(1);
-  // throw new Error('opps!');
   const {theme, setTheme} = useContext(ThemeContext);
   const {data, isLoading, error} = useFetch(
-    'topArtist',
+    ['topArtist', currentPage],
     `http://ws.audioscrobbler.com/2.0/?method=chart.gettopartists&api_key=${Config.API_KEY}&format=json&limit=20&page=${currentPage}`,
   );
 
@@ -31,7 +30,11 @@ const MainPage = ({navigation}) => {
   );
 
   const renderFooter = () => {
-    return <ActivityIndicator size={'large'} />;
+    return (
+      <View>
+        <ActivityIndicator size={'large'} />
+      </View>
+    );
   };
 
   const handleLoadMore = () => {
