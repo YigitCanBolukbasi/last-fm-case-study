@@ -1,17 +1,11 @@
-// In App.js in a new project
-
 import * as React from 'react';
-import {View, Text} from 'react-native';
-
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-
 import MainPage from './Pages/MainPage/MainPage';
 import ArtistDetailPage from './Pages/ArtistDetailPage/ArtistDetailPage';
 import {ThemeProvider} from './Contexts/ThemeContext';
 import ErrorBoundary from './Components/ErrorBoundary';
 import * as Sentry from '@sentry/react-native';
-
 import {QueryClient, QueryClientProvider} from 'react-query';
 
 Sentry.init({
