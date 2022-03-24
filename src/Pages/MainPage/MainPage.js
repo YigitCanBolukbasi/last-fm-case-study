@@ -13,7 +13,7 @@ const MainPage = ({navigation}) => {
   const {theme, setTheme} = useContext(ThemeContext);
   const {data, isLoading, error} = useFetch(
     ['topArtist', currentPage],
-    `https://ws.audioscrobbler.com/2.0/?method=chart.gettopartists&api_key=${Config.API_KEY}&format=json&limit=20&page=${currentPage}`,
+    `https://ws.audioscrobbler.com/2.0/?method=chart.gettopartists&api_key=${Config.API_KEY}&format=json&limit=30&page=${currentPage}`,
   );
 
   const toggleSwitch = () => setTheme(previousState => !previousState);

@@ -9,20 +9,21 @@ import ThemeContext from '../../Contexts/ThemeContext';
 import Config from 'react-native-config';
 
 const ArtistDetailPage = ({route}) => {
-  const [currentPage, setCurrentPage] = useState(1);
+  const [currentPageAlbums, setCurrentPageAlbums] = useState(1);
+  const [currentPageTracks, setCurrentPageTracks] = useState(1);
   const {theme} = useContext(ThemeContext);
   const {mbid, name, image} = route.params;
 
   const artistImage = image.filter(i => i.size === 'extralarge');
 
   const topAlbums = useFetch(
-    ['topAlbums', currentPage],
-    `https://ws.audioscrobbler.com/2.0/?method=artist.gettopalbums&mbid=${mbid}&api_key=${Config.API_KEY}&format=json&limit=20&page=${currentPage}`,
+    ['topAlbums', currentPageAlbums],
+    `https://ws.audioscrobbler.com/2.0/?method=artist.gettopalbums&mbid=${mbid}&api_key=${Config.API_KEY}&format=json&limit=25&page=${currentPageAlbums}`,
   );
 
   const topTracks = useFetch(
-    ['toptracks', currentPage],
-    `https://ws.audioscrobbler.com/2.0/?method=artist.gettoptracks&mbid=${mbid}&api_key=${Config.API_KEY}&format=json&limit=20&page=${currentPage}`,
+    ['toptracks', currentPageTracks],
+    `https://ws.audioscrobbler.com/2.0/?method=artist.gettoptracks&mbid=${mbid}&api_key=${Config.API_KEY}&format=json&limit=25&page=${currentPageTracks}`,
   );
 
   const RenderAlbumsAndTracks = ({item}) => <ProductCard product={item} />;
@@ -35,12 +36,17 @@ const ArtistDetailPage = ({route}) => {
     );
   };
 
-  const handleLoadMore = () => {
-    setCurrentPage(currentPage + 1);
+  const handleLoadMoreAlbums = () => {
+    setCurrentPageAlbums(currentPageAlbums + 1);
+  };
+  const handleLoadMoreTracks = () => {
+    setCurrentPageTracks(currentPageTracks + 1);
   };
 
-  if (topAlbums.isLoading || topTracks.isLoading) {
-    return <ActivityIndicator size={'large'} />;
+  if (!renderFooter) {
+    if (topAlbums.isLoading || topTracks.isLoading) {
+      return <ActivityIndicator size={'large'} />;
+    }
   }
 
   if (topAlbums.error || topTracks.error) {
@@ -76,7 +82,7 @@ const ArtistDetailPage = ({route}) => {
               return index.toString();
             }}
             ListFooterComponent={renderFooter}
-            onEndReached={handleLoadMore}
+            onEndReached={handleLoadMoreAlbums}
             onEndReachedThreshold={0}
           />
         </View>
@@ -90,7 +96,7 @@ const ArtistDetailPage = ({route}) => {
             data={topTracks?.data?.toptracks?.track}
             style={styles.track_container}
             ListFooterComponent={renderFooter}
-            onEndReached={handleLoadMore}
+            onEndReached={handleLoadMoreTracks}
             onEndReachedThreshold={0}
           />
         </View>
