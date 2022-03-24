@@ -13,9 +13,9 @@ ReactQuery
 React Native Navigation
 
 React Native Testing Library 
-
-
 <!-- -->
+
+## Install and run on android
 
 
 
