@@ -11,7 +11,7 @@ React Native Navigation
 React Native Testing Library 
 <!-- -->
 
-##Install and run on android
+<!--##Install and run on android-->
 npm install -g react-native-cli
 cd react-native-quick-sample
 npm install
