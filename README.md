@@ -17,6 +17,10 @@ React Native Testing Library
 
 ## Install and run on android
 
+npm install 
+
+react-native run-android
+
 
 
 
