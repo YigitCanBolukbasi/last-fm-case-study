@@ -5,13 +5,12 @@ A cute application where you can browse their albums and music by selecting arti
 
 
 ## Libraries i use
+
 React Native   
 
-ReactQuery
-
+ReactQuery  
 
 React Native Navigation
-
 
 React Native Testing Library 
 
