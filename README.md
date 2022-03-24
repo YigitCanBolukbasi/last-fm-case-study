@@ -13,6 +13,8 @@ ReactQuery
 React Native Navigation
 
 React Native Testing Library 
+
+Sentry
 <!-- -->
 
 ## Install and run on android
