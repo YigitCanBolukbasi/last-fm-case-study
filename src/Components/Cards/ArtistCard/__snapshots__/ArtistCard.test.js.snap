@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`should first 1`] = `
+exports[`should render component 1`] = `
 <View
   accessible={true}
   collapsable={false}
@@ -88,6 +88,7 @@ exports[`should first 1`] = `
                 "margin": 10,
               }
             }
+            testID="artist-title"
           >
             Artist
           </Text>
@@ -100,6 +101,7 @@ exports[`should first 1`] = `
                 "margin": 10,
               }
             }
+            testID="artist-name"
           >
             Eminem
           </Text>
@@ -121,6 +123,7 @@ exports[`should first 1`] = `
                 "margin": 5,
               }
             }
+            testID="artist-playcount"
           >
             Playcount:
             272269112
@@ -133,6 +136,7 @@ exports[`should first 1`] = `
                 "margin": 5,
               }
             }
+            testID="artist-listeners"
           >
             Listeners:
             5354850

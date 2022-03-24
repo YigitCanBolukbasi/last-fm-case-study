@@ -21,18 +21,26 @@ const ArtistCard = ({artist, onSelect}) => {
           />
           <View style={styles.body_container}>
             <View style={styles.title_container}>
-              <Text style={theme ? styles.title_dark : styles.title}>
+              <Text
+                testID="artist-title"
+                style={theme ? styles.title_dark : styles.title}>
                 Artist
               </Text>
-              <Text style={theme ? styles.artist_dark : styles.artist}>
+              <Text
+                testID="artist-name"
+                style={theme ? styles.artist_dark : styles.artist}>
                 {artist.name}
               </Text>
             </View>
             <View style={styles.inner_container}>
-              <Text style={theme ? styles.text_dark : styles.text}>
+              <Text
+                testID="artist-playcount"
+                style={theme ? styles.text_dark : styles.text}>
                 Playcount:{artist.playcount}
               </Text>
-              <Text style={theme ? styles.text_dark : styles.text}>
+              <Text
+                testID="artist-listeners"
+                style={theme ? styles.text_dark : styles.text}>
                 Listeners:{artist.listeners}
               </Text>
             </View>
