@@ -17,9 +17,17 @@ React Native Testing Library
 
 ## Install and run on android
 
-npm install 
+yarn 
 
 react-native run-android
+<!-- -->
+
+## Install and run on ios
+
+yarn
+
+react-native run-ios
+<!-- -->
 
 
 
