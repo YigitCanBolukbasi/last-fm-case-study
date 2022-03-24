@@ -1,0 +1,145 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should first 1`] = `
+<View
+  accessible={true}
+  collapsable={false}
+  focusable={false}
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    Object {
+      "opacity": 1,
+    }
+  }
+  testID="artistTestButton"
+>
+  <View
+    style={
+      Object {
+        "borderColor": "black",
+        "borderRadius": 12,
+        "elevation": 20,
+        "marginBottom": 10,
+        "padding": 5,
+        "shadowColor": "#000",
+      }
+    }
+  >
+    <View
+      style={
+        Object {
+          "backgroundColor": "white",
+          "borderRadius": 12,
+          "flexDirection": "row",
+          "height": 222.33333333333334,
+          "padding": 10,
+          "zIndex": 1,
+        }
+      }
+    >
+      <Image
+        source={
+          Object {
+            "uri": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
+          }
+        }
+        style={
+          Object {
+            "alignSelf": "center",
+            "borderRadius": 70,
+            "height": 70,
+            "marginRight": 10,
+            "overflow": "visible",
+            "width": 70,
+          }
+        }
+      />
+      <View
+        style={
+          Object {
+            "flex": 1,
+            "flexDirection": "row",
+            "margin": 5,
+          }
+        }
+      >
+        <View
+          style={
+            Object {
+              "flex": 1,
+              "margin": 5,
+            }
+          }
+        >
+          <Text
+            style={
+              Object {
+                "borderBottomColor": "black",
+                "borderBottomWidth": 1,
+                "color": "black",
+                "fontSize": 18,
+                "fontWeight": "700",
+                "margin": 10,
+              }
+            }
+          >
+            Artist
+          </Text>
+          <Text
+            style={
+              Object {
+                "color": "black",
+                "fontSize": 18,
+                "fontWeight": "700",
+                "margin": 10,
+              }
+            }
+          >
+            Eminem
+          </Text>
+        </View>
+        <View
+          style={
+            Object {
+              "flex": 1,
+              "margin": 5,
+              "marginTop": 30,
+            }
+          }
+        >
+          <Text
+            style={
+              Object {
+                "color": "black",
+                "fontSize": 12,
+                "margin": 5,
+              }
+            }
+          >
+            Playcount:
+            272269112
+          </Text>
+          <Text
+            style={
+              Object {
+                "color": "black",
+                "fontSize": 12,
+                "margin": 5,
+              }
+            }
+          >
+            Listeners:
+            5354850
+          </Text>
+        </View>
+      </View>
+    </View>
+  </View>
+</View>
+`;

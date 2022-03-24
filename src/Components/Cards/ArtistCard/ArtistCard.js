@@ -7,10 +7,10 @@ import ThemeContext from '../../../Contexts/ThemeContext';
 const ArtistCard = ({artist, onSelect}) => {
   const {theme} = useContext(ThemeContext);
 
-  const image = artist.image.filter(i => i.size === 'extralarge');
+  let image = artist.image.filter(i => i.size === 'extralarge');
 
   return (
-    <TouchableOpacity onPress={onSelect}>
+    <TouchableOpacity testID="artistTestButton" onPress={onSelect}>
       <View style={styles.shadow_container}>
         <View style={theme ? styles.container_dark : styles.container}>
           <Image
