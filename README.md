@@ -1,6 +1,7 @@
 # **Last fm study case** 
 <!-- -->
-
+A project written using React query , React Hooks and last.fm/api!
+A cute application where you can browse their albums and music by selecting artists!
 
 
 
