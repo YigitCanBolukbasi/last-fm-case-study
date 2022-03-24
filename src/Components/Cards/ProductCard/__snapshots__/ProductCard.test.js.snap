@@ -67,6 +67,7 @@ exports[`should first 1`] = `
               "fontWeight": "700",
             }
           }
+          testID="product-title"
         >
           Graduation
         </Text>
@@ -78,6 +79,7 @@ exports[`should first 1`] = `
               "fontWeight": "700",
             }
           }
+          testID="product-name"
         >
           What You Need
         </Text>
@@ -110,6 +112,7 @@ exports[`should first 1`] = `
               "margin": 5,
             }
           }
+          testID="product-playcount"
         >
           PlayCount:
           2619123

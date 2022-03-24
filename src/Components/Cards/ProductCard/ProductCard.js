@@ -28,10 +28,14 @@ const ProductCard = ({product}) => {
         />
         <View style={styles.body_container}>
           <View style={styles.title_container}>
-            <Text style={theme ? styles.title_dark : styles.title}>
+            <Text
+              testID="product-title"
+              style={theme ? styles.title_dark : styles.title}>
               Graduation
             </Text>
-            <Text style={theme ? styles.name_dark : styles.name}>
+            <Text
+              testID="product-name"
+              style={theme ? styles.name_dark : styles.name}>
               {product.name}
             </Text>
           </View>
@@ -40,7 +44,9 @@ const ProductCard = ({product}) => {
               {product.listeners && 'Listeners:'}
               {product.listeners && product.listeners}
             </Text>
-            <Text style={theme ? styles.text_dark : styles.text}>
+            <Text
+              testID="product-playcount"
+              style={theme ? styles.text_dark : styles.text}>
               PlayCount:{product.playcount}
             </Text>
           </View>
