@@ -90,3 +90,15 @@ test('should render listeners correctly', () => {
   const artistListeners = comp.getByTestId('artist-listeners').children[0];
   expect(artistListeners).toBe(listeners);
 });
+
+test('should triggered onSelect', () => {
+  const mockFunction = jest.fn();
+  const comp = render(
+    <ThemeProvider>
+      <ArtistCard artist={items} onSelect={mockFunction} />
+    </ThemeProvider>,
+  );
+  const buttonTouchable = comp.getByTestId('artist-touchable');
+  fireEvent(buttonTouchable, 'press');
+  expect(mockFunction).toBeCalled();
+});

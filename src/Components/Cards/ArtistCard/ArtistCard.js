@@ -10,7 +10,7 @@ const ArtistCard = ({artist, onSelect}) => {
   let image = artist.image.filter(i => i.size === 'extralarge');
 
   return (
-    <TouchableOpacity testID="artistTestButton" onPress={onSelect}>
+    <TouchableOpacity testID="artist-touchable" onPress={onSelect}>
       <View style={styles.shadow_container}>
         <View style={theme ? styles.container_dark : styles.container}>
           <Image

@@ -17,7 +17,7 @@ exports[`should render component 1`] = `
       "opacity": 1,
     }
   }
-  testID="artistTestButton"
+  testID="artist-touchable"
 >
   <View
     style={
